@@ -17,7 +17,9 @@
 :root{--bg:#0a0a0b;--card:#141416;--card2:#1c1c1f;--tx:#f2f2f3;--mu:#a3a3aa;--ln:rgba(255,255,255,.1);--ac:#e2342d;--ac2:#f0466e;--ok:#25d366;color-scheme:dark}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-html,body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
+html{background:var(--bg)}
+body{margin:0;background:transparent;color:var(--tx);font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
+#fx{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
 button{font:inherit;color:inherit;cursor:pointer}
 img{display:block}
 .top{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:12px;padding:10px 16px;padding-top:calc(10px + env(safe-area-inset-top,0px));background:#000;border-bottom:1px solid var(--ln)}
@@ -27,7 +29,7 @@ img{display:block}
 .cartb svg{width:28px;height:28px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .cartb i{position:absolute;top:2px;right:0;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:var(--ac);color:#fff;font:700 12px/20px system-ui;font-style:normal;text-align:center}
 .cartb i:empty{display:none}
-.hero{padding:22px 16px 26px;background:linear-gradient(180deg,#2a0f14 0%,#140b0d 70%,var(--bg) 100%)}
+.hero{padding:22px 16px 26px;background:linear-gradient(180deg,rgba(42,15,20,.85) 0%,rgba(20,11,13,.55) 70%,rgba(10,10,11,0) 100%)}
 .hero h1{margin:0 0 14px;font-size:clamp(24px,7vw,40px);line-height:1.15}
 .hero p{margin:0 0 14px;color:var(--mu)}
 .hbs{display:flex;flex-wrap:wrap;gap:10px}
@@ -104,6 +106,7 @@ img{display:block}
 </style>
 </head>
 <body>
+<canvas id="fx" aria-hidden="true"></canvas>
 <header class="top"><img id="lg" src="logo.webp" alt=""><b id="nm">LF Inoxidables</b>
 <button type="button" class="cartb" id="cartB" aria-label="Carrito"><svg viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 4h2.5l2.2 11h10.6l2-8H6.6"/></svg><i id="cartN"></i></button></header>
 <section class="hero"><h1 id="ti">Catálogo</h1><p id="bioC" hidden></p>
@@ -449,6 +452,63 @@ img{display:block}
       if (!D) $('list').innerHTML = '<p class="empty">No se pudo cargar el catálogo. Revisa tu conexión.</p>';
     });
   if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+})();
+// fondo: chispas rojas que suben, como brasas de leña (muy ligero; se detiene si la pestaña no se ve o si el celular pide menos animación)
+(function () {
+  const c = document.getElementById('fx');
+  if (!c || !c.getContext) return;
+  const g = c.getContext('2d'),
+    R = (a, b) => a + Math.random() * (b - a);
+  let W = 0,
+    H = 0,
+    P = [],
+    t = 0,
+    raf = 0;
+  const mk = (abajo) => ({ x: R(0, W), y: abajo ? H + R(0, 30) : R(0, H), r: R(0.6, 1.3), v: R(0.7, 1.4), ph: R(0, 6.28), f: R(0.6, 1), h: R(0.35, 0.9) });
+  function mide() {
+    const d = Math.min(1.5, window.devicePixelRatio || 1);
+    W = innerWidth;
+    H = innerHeight;
+    c.width = Math.round(W * d);
+    c.height = Math.round(H * d);
+    g.setTransform(d, 0, 0, d, 0, 0);
+    const n = Math.round(Math.min(70, Math.max(20, (W * H) / 12000)));
+    while (P.length < n) P.push(mk(false));
+    P.length = n;
+  }
+  function cuadro() {
+    raf = 0;
+    t++;
+    g.clearRect(0, 0, W, H);
+    for (let i = 0; i < P.length; i++) {
+      const p = P[i];
+      p.y -= p.v;
+      p.x += Math.sin(t * 0.02 + p.ph) * 0.09;
+      const vida = Math.max(0, Math.min(1, p.y / (H * p.h))),
+        fl = 0.65 + 0.35 * Math.sin(t * 0.15 + p.ph * 3),
+        a = vida * fl * p.f;
+      g.strokeStyle = 'rgba(230,40,20,' + a * 0.5 + ')';
+      g.lineWidth = p.r * 0.8;
+      g.beginPath();
+      g.moveTo(p.x, p.y);
+      g.lineTo(p.x - Math.sin(t * 0.02 + p.ph) * 0.5, p.y + p.v * 7);
+      g.stroke();
+      g.fillStyle = 'rgba(255,' + Math.round(70 + 40 * fl) + ',40,' + a + ')';
+      g.beginPath();
+      g.arc(p.x, p.y, p.r, 0, 6.283);
+      g.fill();
+      if (p.y < -10 || (a <= 0.01 && p.y < H * 0.3)) P[i] = mk(true);
+    }
+    pide();
+  }
+  const quieto = () => document.hidden || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  function pide() {
+    if (!raf && !quieto()) raf = requestAnimationFrame(cuadro);
+  }
+  mide();
+  addEventListener('resize', mide);
+  document.addEventListener('visibilitychange', pide);
+  pide();
 })();
 </script>
 </body>
