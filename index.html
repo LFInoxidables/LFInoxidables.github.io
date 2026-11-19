@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<title>LF Inoxidables · Catálogo</title>
+<meta name="description" content="Equipos para restaurantes en acero inoxidable o fierro. Fabricación a la medida.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="LF Inoxidables · Catálogo">
+<meta property="og:description" content="Equipos para restaurantes en acero inoxidable o fierro. Fabricación a la medida.">
+<meta property="og:image" content="logo.webp">
+<link rel="icon" href="logo.webp">
+<link rel="apple-touch-icon" href="logo.webp">
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+:root{--bg:#0a0a0b;--card:#141416;--card2:#1c1c1f;--tx:#f2f2f3;--mu:#a3a3aa;--ln:rgba(255,255,255,.1);--ac:#e2342d;--ac2:#f0466e;--ok:#25d366;color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit;cursor:pointer}
+img{display:block}
+.top{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:12px;padding:10px 16px;padding-top:calc(10px + env(safe-area-inset-top,0px));background:#000;border-bottom:1px solid var(--ln)}
+.top img{width:44px;height:44px;border-radius:12px;object-fit:cover}
+.top b{flex:1;font-size:19px;letter-spacing:.01em}
+.cartb{position:relative;width:46px;height:46px;border:0;background:none;display:flex;align-items:center;justify-content:center}
+.cartb svg{width:28px;height:28px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cartb i{position:absolute;top:2px;right:0;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:var(--ac);color:#fff;font:700 12px/20px system-ui;font-style:normal;text-align:center}
+.cartb i:empty{display:none}
+.hero{padding:22px 16px 26px;background:linear-gradient(180deg,#2a0f14 0%,#140b0d 70%,var(--bg) 100%)}
+.hero h1{margin:0 0 14px;font-size:clamp(24px,7vw,40px);line-height:1.15}
+.hero p{margin:0 0 14px;color:var(--mu)}
+.hbs{display:flex;flex-wrap:wrap;gap:10px}
+.hb{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);text-decoration:none;color:var(--tx);font-weight:600}
+.hb svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.hb.wa{border-color:rgba(37,211,102,.45);color:#7ff0a8}
+.chips{position:sticky;top:calc(65px + env(safe-area-inset-top,0px));z-index:15;display:flex;gap:10px;overflow-x:auto;padding:12px 16px;background:var(--bg);border-bottom:1px solid var(--ln);scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;padding:10px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:#151517;font-weight:600;white-space:nowrap}
+.chip.on{background:linear-gradient(90deg,var(--ac),var(--ac2));border-color:transparent;color:#fff}
+.srch{padding:12px 16px 0}
+.srch input{width:100%;height:46px;border-radius:12px;border:1px solid var(--ln);background:#121214;color:var(--tx);padding:0 14px;font:inherit;font-size:16px}
+.sec{padding:8px 16px 6px;scroll-margin-top:130px}
+.sec h2{margin:18px 0 12px;font-size:24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--ln);border-radius:14px;overflow:hidden;cursor:pointer}
+.ph{position:relative;aspect-ratio:1/1;background:#1b1b1e}
+.ph img{width:100%;height:100%;object-fit:cover}
+.top1{position:absolute;top:8px;left:8px;padding:4px 10px;border-radius:999px;background:var(--ac);color:#fff;font:700 12px/1.3 system-ui}
+.cb{display:flex;flex-direction:column;gap:6px;padding:10px 12px 12px;flex:1}
+.cb h3{margin:0;font-size:15px;line-height:1.25}
+.cb p{margin:0;color:var(--mu);font-size:13px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cb .pr{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.cb .pr b{font-size:16px}
+.add{width:40px;height:40px;flex:0 0 40px;border-radius:999px;border:1.5px solid var(--ac);background:none;color:var(--ac);font-size:22px;line-height:1}
+.empty{padding:40px 16px;text-align:center;color:var(--mu)}
+.foot{margin-top:28px;padding:24px 16px calc(100px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--ln);color:var(--mu);font-size:13px;text-align:center}
+.foot b{display:block;color:var(--tx);font-size:15px;margin-bottom:4px}
+.bar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:30;display:none;align-items:center;justify-content:space-between;gap:10px;padding:14px 18px;border:0;border-radius:14px;background:linear-gradient(90deg,var(--ac),var(--ac2));color:#fff;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.bar.on{display:flex}
+.ov{position:fixed;inset:0;z-index:50;display:none;background:rgba(0,0,0,.7)}
+.ov.on{display:block}
+.sheet{position:absolute;left:0;right:0;bottom:0;max-height:92vh;overflow:auto;background:#121214;border-radius:18px 18px 0 0;padding:0 0 calc(20px + env(safe-area-inset-bottom,0px))}
+.shh{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:#121214;border-bottom:1px solid var(--ln)}
+.shh b{font-size:18px}
+.x{width:40px;height:40px;border-radius:999px;border:1px solid var(--ln);background:#1c1c1f;font-size:18px}
+.gal{position:relative;background:#000}
+.gal .sl{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.gal .sl::-webkit-scrollbar{display:none}
+.gal .sl img{flex:0 0 100%;width:100%;aspect-ratio:1/1;object-fit:contain;scroll-snap-align:center;background:#000}
+.dots{position:absolute;left:0;right:0;bottom:10px;display:flex;justify-content:center;gap:6px}
+.dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.4)}
+.dots i.on{background:#fff}
+.gal .nav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:0;background:rgba(0,0,0,.45);color:#fff;font-size:22px}
+.gal .nav.l{left:8px}.gal .nav.r{right:8px}
+.pd{padding:16px}
+.pd h2{margin:0 0 8px;font-size:22px}
+.pd .pp{font-size:24px;font-weight:800;margin:0 0 12px}
+.pd .dd{white-space:pre-wrap;color:#d4d4d8;margin:0 0 16px}
+.qty{display:flex;align-items:center;gap:0;border:1px solid var(--ln);border-radius:12px;overflow:hidden}
+.qty button{width:46px;height:48px;border:0;background:#1c1c1f;font-size:20px}
+.qty span{min-width:44px;text-align:center;font-weight:700}
+.row{display:flex;gap:10px;align-items:center}
+.btn{flex:1;min-height:50px;border-radius:12px;border:0;background:linear-gradient(90deg,var(--ac),var(--ac2));color:#fff;font-weight:700;font-size:16px;padding:0 14px}
+.btn2{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:48px;margin-top:10px;border-radius:12px;border:1px solid var(--ln);background:#1a1a1d;font-weight:600;text-decoration:none;color:var(--tx)}
+.btn2.wa{border-color:rgba(37,211,102,.45);color:#7ff0a8}
+.ci{display:flex;gap:12px;padding:12px 16px;border-bottom:1px solid var(--ln)}
+.ci img{width:64px;height:64px;border-radius:10px;object-fit:cover;background:#1b1b1e}
+.ci .cx{flex:1;min-width:0}
+.ci .cx b{display:block;font-size:14.5px}
+.ci .cx small{color:var(--mu)}
+.ci .qty{margin-top:8px;width:max-content}
+.ci .qty button{width:38px;height:36px;font-size:17px}
+.ci .rm{border:0;background:none;color:var(--mu);text-decoration:underline;margin-left:10px}
+.tot{display:flex;justify-content:space-between;padding:16px;font-size:18px;font-weight:800}
+.fld{padding:0 16px 10px}
+.fld input,.fld textarea{width:100%;border-radius:12px;border:1px solid var(--ln);background:#0e0e10;color:var(--tx);padding:12px 14px;font:inherit;font-size:16px}
+.fld label{display:block;color:var(--mu);font-size:13px;margin:0 0 6px}
+.info{padding:16px;white-space:pre-wrap}
+.toast{position:fixed;left:50%;bottom:calc(90px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);opacity:0;z-index:80;background:#16a34a;color:#fff;padding:10px 18px;border-radius:999px;font-weight:600;transition:.2s;pointer-events:none;white-space:nowrap}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.note{color:var(--mu);font-size:12.5px;margin:6px 0 0}
+@media (min-width:900px){.bar{left:50%;right:auto;width:520px;transform:translateX(-50%)}.sheet{left:50%;right:auto;bottom:auto;top:50%;transform:translate(-50%,-50%);width:560px;border-radius:18px}.grid{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}}
+</style>
+</head>
+<body>
+<header class="top"><img id="lg" src="logo.webp" alt=""><b id="nm">LF Inoxidables</b>
+<button type="button" class="cartb" id="cartB" aria-label="Carrito"><svg viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 4h2.5l2.2 11h10.6l2-8H6.6"/></svg><i id="cartN"></i></button></header>
+<section class="hero"><h1 id="ti">Catálogo</h1><p id="bioC" hidden></p>
+<div class="hbs"><button type="button" class="hb" id="ubiB"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Ubicación</button>
+<button type="button" class="hb" id="aceB"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5h.01"/></svg>Acerca de</button>
+<a class="hb wa" id="waB" href="#" hidden><svg viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/></svg>WhatsApp</a></div></section>
+<nav class="chips" id="chips"></nav>
+<div class="srch"><input id="q" type="search" placeholder="Buscar producto…" autocomplete="off"></div>
+<main id="list"><p class="empty">Cargando catálogo…</p></main>
+<footer class="foot" id="ft"></footer>
+<button type="button" class="bar" id="bar"><span id="barN">Ver carrito</span><span id="barT"></span></button>
+<div class="ov" id="ovP"><div class="sheet" id="shP"></div></div>
+<div class="ov" id="ovC"><div class="sheet" id="shC"></div></div>
+<div class="ov" id="ovI"><div class="sheet" id="shI"></div></div>
+<div class="toast" id="toast"></div>
+<script>
+(function () {
+  'use strict';
+  const $ = (id) => document.getElementById(id);
+  const esc = (t) => String(t == null ? '' : t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+  const fmtM = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN', minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const money = (v) => fmtM.format(+v || 0);
+  let D = null,
+    CART = [],
+    Q = '',
+    openId = null;
+  try {
+    D = JSON.parse(localStorage.getItem('lfcat') || 'null');
+  } catch (e) {}
+  try {
+    CART = JSON.parse(localStorage.getItem('lfcart') || '[]') || [];
+  } catch (e) {}
+  if (!Array.isArray(CART)) CART = [];
+  const base = () => (D && D.url) || location.href.replace(/[#?].*$/, '').replace(/[^/]*$/, '');
+  const prod = (id) => D && D.prods.find((p) => p.id === id);
+  const waNum = () => String((D && D.wa) || '').replace(/\D/g, '');
+  const waLink = (t) => 'https://wa.me/' + waNum() + '?text=' + encodeURIComponent(t);
+  function toast(t) {
+    const e = $('toast');
+    e.textContent = t;
+    e.classList.add('on');
+    clearTimeout(e._t);
+    e._t = setTimeout(() => e.classList.remove('on'), 1800);
+  }
+  function saveCart() {
+    CART = CART.filter((x) => prod(x.id) && x.q > 0);
+    try {
+      localStorage.setItem('lfcart', JSON.stringify(CART));
+    } catch (e) {}
+    const n = CART.reduce((a, x) => a + x.q, 0),
+      t = CART.reduce((a, x) => a + x.q * (prod(x.id).p || 0), 0);
+    $('cartN').textContent = n ? n : '';
+    $('bar').classList.toggle('on', n > 0);
+    $('barN').textContent = n + (n === 1 ? ' producto · Ver carrito' : ' productos · Ver carrito');
+    $('barT').textContent = money(t);
+  }
+  function addCart(id, q) {
+    const p = prod(id);
+    if (!p) return;
+    const o = CART.find((x) => x.id === id);
+    if (o) o.q += q || 1;
+    else CART.push({ id: id, q: q || 1 });
+    saveCart();
+    toast('Agregado al carrito');
+  }
+  const ph = (p) => (p.f && p.f[0] ? p.f[0][1] || p.f[0][0] : '');
+  function card(p) {
+    return (
+      '<article class="card" data-p="' + esc(p.id) + '"><div class="ph">' +
+      (ph(p) ? '<img loading="lazy" decoding="async" src="' + esc(ph(p)) + '" alt="' + esc(p.t) + '">' : '') +
+      (p.top ? '<span class="top1">★ TOP</span>' : '') +
+      '</div><div class="cb"><h3>' + esc(p.t) + '</h3>' + (p.d ? '<p>' + esc(p.d) + '</p>' : '') +
+      '<div class="pr"><b>' + (p.p ? money(p.p) : 'Pregunta el precio') + '</b>' +
+      (p.p ? '<button type="button" class="add" data-add="' + esc(p.id) + '" aria-label="Agregar al carrito">+</button>' : '') +
+      '</div></div></article>'
+    );
+  }
+  const norm = (t) => String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  function render() {
+    if (!D) return;
+    document.title = (D.n || 'Catálogo') + ' · Catálogo';
+    $('nm').textContent = D.n || '';
+    $('ti').textContent = D.ti || 'Catálogo';
+    $('bioC').hidden = true;
+    $('waB').hidden = !waNum();
+    $('waB').href = waLink('Hola ' + (D.n || '') + ', vi su catálogo y quiero información.');
+    const P = D.prods,
+      secs = [];
+    if (Q) {
+      const q = norm(Q).split(/\s+/).filter(Boolean),
+        R = P.filter((p) => {
+          const t = norm(p.t + ' ' + p.d);
+          return q.every((w) => t.indexOf(w) >= 0);
+        });
+      secs.push({ id: 'res', t: 'Resultados', L: R });
+    } else {
+      const T = P.filter((p) => p.top);
+      if (T.length) secs.push({ id: 'top', t: 'Destacados', L: T });
+      D.cats.forEach((c) => {
+        const L = P.filter((p) => (p.c || []).indexOf(c.id) >= 0);
+        if (L.length) secs.push({ id: c.id, t: c.t, L: L });
+      });
+      const sin = P.filter((p) => !(p.c || []).some((c) => D.cats.find((x) => x.id === c)));
+      if (sin.length) secs.push({ id: 'otros', t: 'Otros', L: sin });
+    }
+    $('chips').innerHTML = Q ? '' : secs.map((s, i) => '<button type="button" class="chip' + (i ? '' : ' on') + '" data-s="' + esc(s.id) + '">' + esc(s.t) + '</button>').join('');
+    $('chips').hidden = !!Q;
+    $('list').innerHTML = secs.length && secs.some((s) => s.L.length)
+      ? secs.map((s) => '<section class="sec" id="s-' + esc(s.id) + '"><h2>' + esc(s.t) + '</h2><div class="grid">' + s.L.map(card).join('') + '</div></section>').join('')
+      : '<p class="empty">' + (Q ? 'No hay productos con «' + esc(Q) + '».' : 'Todavía no hay productos.') + '</p>';
+    $('ft').innerHTML = '<b>' + esc(D.n || '') + '</b>' + (D.dir ? esc(D.dir) + '<br>' : '') + (D.nota ? esc(D.nota) + '<br>' : '') + 'Precios en pesos mexicanos (MXN) · © ' + new Date().getFullYear();
+    saveCart();
+    spy();
+  }
+  // chip activo según la sección que se ve
+  let spyT = 0;
+  function spy() {
+    clearTimeout(spyT);
+    spyT = setTimeout(() => {
+      const S = [...document.querySelectorAll('.sec')];
+      let cur = S[0];
+      S.forEach((s) => {
+        if (s.getBoundingClientRect().top < 160) cur = s;
+      });
+      if (!cur) return;
+      const id = cur.id.slice(2);
+      document.querySelectorAll('.chip').forEach((c) => {
+        const on = c.dataset.s === id;
+        if (on && !c.classList.contains('on')) c.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
+        c.classList.toggle('on', on);
+      });
+    }, 80);
+  }
+  addEventListener('scroll', spy, { passive: true });
+  $('chips').addEventListener('click', (e) => {
+    const b = e.target.closest('.chip');
+    if (!b) return;
+    const s = $('s-' + b.dataset.s);
+    if (s) s.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+  $('q').addEventListener('input', (e) => {
+    Q = e.target.value.trim();
+    render();
+  });
+  $('list').addEventListener('click', (e) => {
+    const a = e.target.closest('[data-add]');
+    if (a) {
+      e.stopPropagation();
+      addCart(a.dataset.add, 1);
+      return;
+    }
+    const c = e.target.closest('[data-p]');
+    if (c) openP(c.dataset.p, true);
+  });
+  // ---------- ventanas ----------
+  function ov(id, on) {
+    $(id).classList.toggle('on', on);
+    document.body.style.overflow = document.querySelector('.ov.on') ? 'hidden' : '';
+  }
+  ['ovP', 'ovC', 'ovI'].forEach((id) =>
+    $(id).addEventListener('click', (e) => {
+      if (e.target.id === id || e.target.closest('.x')) cierra(id);
+    }),
+  );
+  let pushed = false;
+  function cierra(id) {
+    if (id === 'ovP' && openId) {
+      openId = null;
+      if (pushed) {
+        pushed = false;
+        history.back();
+      } else if (/^#p=/.test(location.hash)) history.replaceState(null, '', location.pathname + location.search);
+    }
+    ov(id, false);
+  }
+  let qty = 1;
+  function openP(id, push) {
+    const p = prod(id);
+    if (!p) return;
+    openId = id;
+    qty = 1;
+    if (push) {
+      history.pushState({ p: id }, '', '#p=' + encodeURIComponent(id));
+      pushed = true;
+    }
+    const F = (p.f || []).map((f) => f[0] || f[1]);
+    $('shP').innerHTML =
+      '<div class="shh"><b>' + (p.top ? '★ ' : '') + 'Producto</b><button type="button" class="x" aria-label="Cerrar">✕</button></div>' +
+      (F.length
+        ? '<div class="gal"><div class="sl" id="sl">' + F.map((u, i) => '<img src="' + esc(u) + '" alt="' + esc(p.t) + ' ' + (i + 1) + '"' + (i ? ' loading="lazy"' : '') + '>').join('') + '</div>' +
+          (F.length > 1 ? '<button type="button" class="nav l" data-g="-1" aria-label="Anterior">‹</button><button type="button" class="nav r" data-g="1" aria-label="Siguiente">›</button><div class="dots">' + F.map((_, i) => '<i' + (i ? '' : ' class="on"') + '></i>').join('') + '</div>' : '') +
+          '</div>'
+        : '') +
+      '<div class="pd"><h2>' + esc(p.t) + '</h2><p class="pp">' + (p.p ? money(p.p) : 'Pregunta el precio') + '</p>' +
+      (p.d ? '<p class="dd">' + esc(p.d) + '</p>' : '') +
+      (p.p ? '<div class="row"><div class="qty"><button type="button" data-q="-1" aria-label="Menos">−</button><span id="qv">1</span><button type="button" data-q="1" aria-label="Más">+</button></div><button type="button" class="btn" id="addB">Agregar ' + money(p.p) + '</button></div>' : '') +
+      (waNum() ? '<a class="btn2 wa" target="_blank" rel="noopener" href="' + esc(waLink('Hola, me interesa: ' + p.t + (p.p ? ' (' + money(p.p) + ')' : '') + '\n' + base() + 'p/' + p.id + '.html')) + '">Preguntar por WhatsApp</a>' : '') +
+      '<button type="button" class="btn2" id="shB">Compartir este producto</button></div>';
+    ov('ovP', true);
+    $('shP').scrollTop = 0;
+    const sl = $('sl');
+    if (sl)
+      sl.addEventListener(
+        'scroll',
+        () => {
+          const i = Math.round(sl.scrollLeft / sl.clientWidth);
+          $('shP').querySelectorAll('.dots i').forEach((d, k) => d.classList.toggle('on', k === i));
+        },
+        { passive: true },
+      );
+  }
+  $('shP').addEventListener('click', (e) => {
+    const g = e.target.closest('[data-g]');
+    if (g) {
+      const sl = $('sl');
+      sl.scrollBy({ left: +g.dataset.g * sl.clientWidth, behavior: 'smooth' });
+      return;
+    }
+    const q = e.target.closest('[data-q]');
+    if (q) {
+      qty = Math.max(1, qty + +q.dataset.q);
+      $('qv').textContent = qty;
+      const p = prod(openId);
+      $('addB').textContent = 'Agregar ' + money(p.p * qty);
+      return;
+    }
+    if (e.target.closest('#addB')) {
+      addCart(openId, qty);
+      cierra('ovP');
+      return;
+    }
+    if (e.target.closest('#shB')) {
+      const p = prod(openId),
+        u = base() + 'p/' + p.id + '.html',
+        t = p.t + (p.p ? ' · ' + money(p.p) : '');
+      if (navigator.share) navigator.share({ title: p.t, text: t, url: u }).catch(() => {});
+      else if (navigator.clipboard) navigator.clipboard.writeText(t + '\n' + u).then(() => toast('Enlace copiado'));
+    }
+  });
+  // ---------- carrito ----------
+  function openC() {
+    const L = CART.map((x) => [x, prod(x.id)]).filter((z) => z[1]),
+      tot = L.reduce((a, z) => a + z[0].q * (z[1].p || 0), 0);
+    $('shC').innerHTML =
+      '<div class="shh"><b>Tu carrito</b><button type="button" class="x" aria-label="Cerrar">✕</button></div>' +
+      (L.length
+        ? L.map(
+            ([x, p]) =>
+              '<div class="ci"><img src="' + esc(ph(p)) + '" alt=""><div class="cx"><b>' + esc(p.t) + '</b><small>' + x.q + ' × ' + money(p.p) + ' = ' + money(x.q * p.p) + '</small>' +
+              '<div class="row"><div class="qty"><button type="button" data-cq="-1" data-id="' + esc(p.id) + '">−</button><span>' + x.q + '</span><button type="button" data-cq="1" data-id="' + esc(p.id) + '">+</button></div><button type="button" class="rm" data-rm="' + esc(p.id) + '">Quitar</button></div></div></div>',
+          ).join('') +
+          '<div class="tot"><span>Total</span><span>' + money(tot) + '</span></div>' +
+          '<div class="fld"><label for="cn">Tu nombre (opcional)</label><input id="cn" autocomplete="name"></div>' +
+          '<div class="fld"><label for="cm">Comentarios (opcional)</label><textarea id="cm" rows="2" placeholder="Medidas, color, fecha…"></textarea></div>' +
+          '<div class="fld">' + (waNum() ? '<button type="button" class="btn" id="sendB" style="width:100%">Enviar pedido por WhatsApp</button><p class="note">Se abre WhatsApp con tu pedido para que lo mandes.</p>' : '<p class="note">Para pedir, comunícate con nosotros.</p>') +
+          '<button type="button" class="btn2" id="seguir">← Seguir viendo productos</button></div>'
+        : '<p class="empty">Tu carrito está vacío.<br>Toca «+» en un producto para agregarlo.</p>');
+    ov('ovC', true);
+  }
+  $('cartB').onclick = openC;
+  $('bar').onclick = openC;
+  $('shC').addEventListener('click', (e) => {
+    const q = e.target.closest('[data-cq]');
+    if (q) {
+      const o = CART.find((x) => x.id === q.dataset.id);
+      if (o) o.q = Math.max(1, o.q + +q.dataset.cq);
+      saveCart();
+      openC();
+      return;
+    }
+    const r = e.target.closest('[data-rm]');
+    if (r) {
+      CART = CART.filter((x) => x.id !== r.dataset.rm);
+      saveCart();
+      openC();
+      return;
+    }
+    if (e.target.closest('#seguir')) {
+      cierra('ovC');
+      return;
+    }
+    if (e.target.closest('#sendB')) {
+      const L = CART.map((x) => [x, prod(x.id)]).filter((z) => z[1]),
+        tot = L.reduce((a, z) => a + z[0].q * z[1].p, 0),
+        nm = ($('cn').value || '').trim(),
+        cm = ($('cm').value || '').trim();
+      const t =
+        'Hola ' + (D.n || '') + ', quiero este pedido:\n\n' +
+        L.map(([x, p]) => '• ' + x.q + ' × ' + p.t + ' — ' + money(x.q * p.p) + (x.q > 1 ? ' (' + money(p.p) + ' c/u)' : '')).join('\n') +
+        '\n\nTotal: ' + money(tot) +
+        (nm ? '\nNombre: ' + nm : '') +
+        (cm ? '\nComentarios: ' + cm : '') +
+        '\n\nCatálogo: ' + base();
+      location.href = waLink(t);
+    }
+  });
+  // ---------- ubicación y acerca de ----------
+  function info(tit, html) {
+    $('shI').innerHTML = '<div class="shh"><b>' + esc(tit) + '</b><button type="button" class="x" aria-label="Cerrar">✕</button></div><div class="info">' + html + '</div>';
+    ov('ovI', true);
+  }
+  $('ubiB').onclick = () =>
+    info('Ubicación', esc((D && D.dir) || 'Sin dirección') + (D && D.map ? '<a class="btn2" target="_blank" rel="noopener" href="' + esc(D.map) + '">Abrir en el mapa</a>' : ''));
+  $('aceB').onclick = () =>
+    info('Acerca de', '<b>' + esc((D && D.n) || '') + '</b>\n' + esc((D && D.bio) || '') + (waNum() ? '<a class="btn2 wa" target="_blank" rel="noopener" href="' + esc(waLink('Hola, vi su catálogo y quiero información.')) + '">Escríbenos por WhatsApp</a>' : ''));
+  // ---------- dirección (#p=…) y atrás ----------
+  function ruta() {
+    const m = /^#p=(.+)$/.exec(location.hash);
+    if (m && D) {
+      const id = decodeURIComponent(m[1]);
+      if (openId !== id) openP(id, false);
+    } else if (openId) {
+      openId = null;
+      pushed = false;
+      ov('ovP', false);
+    }
+  }
+  addEventListener('popstate', ruta);
+  addEventListener('hashchange', ruta);
+  addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') ['ovP', 'ovC', 'ovI'].forEach((id) => $(id).classList.contains('on') && cierra(id));
+  });
+  // ---------- datos: primero lo guardado (abre al instante), luego lo nuevo ----------
+  if (D) {
+    render();
+    ruta();
+  }
+  fetch('catalogo.json?t=' + Date.now(), { cache: 'no-store' })
+    .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+    .then((d) => {
+      const nuevo = JSON.stringify(d);
+      if (D && JSON.stringify(D) === nuevo) return;
+      D = d;
+      try {
+        localStorage.setItem('lfcat', nuevo);
+      } catch (e) {}
+      const y = scrollY;
+      render();
+      scrollTo(0, y);
+      ruta();
+    })
+    .catch(() => {
+      if (!D) $('list').innerHTML = '<p class="empty">No se pudo cargar el catálogo. Revisa tu conexión.</p>';
+    });
+  if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+})();
+</script>
+</body>
+</html>
