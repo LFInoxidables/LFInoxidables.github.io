@@ -1,7 +1,7 @@
 // Catálogo LF Inoxidables: abre sin internet con lo último que se vio.
 // Fotos: se guardan la primera vez que se ven (su nombre nunca cambia).
 // Página y catalogo.json: primero la red (para que los cambios se vean luego luego); si tarda más de 3 s o no hay internet, la guardada.
-const V = 'lfcat-2';
+const V = 'lfcat-3';
 self.addEventListener('install', (e) => {
   e.waitUntil(
     caches
