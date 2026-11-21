@@ -513,5 +513,19 @@ img{display:block}
   pide();
 })();
 </script>
+<script>
+/* cuenta una visita por celular al día (sin guardar nada de la persona) */
+(function () {
+  var U = "https://script.google.com/macros/s/AKfycbwiRRcsKWBUDOZet55Aqc8y4K3cD4hLALUGrZjTv08Ks3DlNPjbytz39K-NQY-kfvfoCw/exec";
+  if (!U) return;
+  try {
+    var d = new Date(),
+      k = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+    if (localStorage.getItem('lfv') === k) return;
+    localStorage.setItem('lfv', k);
+    fetch(U, { method: 'POST', mode: 'no-cors', keepalive: true, headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ a: 'visita' }) }).catch(function () {});
+  } catch (e) {}
+})();
+</script>
 </body>
 </html>
